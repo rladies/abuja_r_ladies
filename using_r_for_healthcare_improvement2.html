@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Using R for Healthcare Improvement</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Stephen Balogun" />
+    <meta name="date" content="2021-04-24" />
+    <script src="using_r_for_healthcare_improvement2_files/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: center, middle
+
+background-image: url("./snips/abuja R ladies.jpg")
+background-size: 100px
+background-position: 95% 5%
+
+# Using R for Healthcare Improvement
+
+![](./snips/stbalo.jpg)
+## &lt;span style="color: #304e4d; font-weight: 600"&gt;&lt;i&gt;Balogun Stephen Taiye&lt;/i&gt;&lt;/span&gt;
+Saturday, 24th April 2021
+---
+background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg")
+background-size: 100px
+background-position: 95% 95%
+
+## Outline
+
+- About me
+
+- A little about what I do
+
+- The Nigeria National Data Repository
+
+- {tidyndr}
+
+- The AchieveR app
+
+- Q &amp; A
+
+- Demo
+
+- Q &amp; A
+
+---
+background-image: url("./snips/abuja R ladies.jpg")
+background-size: 100px
+background-position: 95% 5%
+
+## About me 
+
+- A Medical Doctor
+
+- A public health physician
+
+- A quality improvement professional and patient safety expert
+
+- Sometimes a data scientist
+
+- Co-founder: [r4hds](https://r4hds.netlify.app/)
+
+- [My personal website](https://taiye.rbind.io) 👨
+
+- Twitter &lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"&gt;&lt;/path&gt;&lt;/svg&gt;: follow @eppydoc 😄
+
+---
+background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/7e/Mudra-Naruto-KageBunshin.svg")
+background-size: 100px
+background-position: 95% 95%
+
+## About what I do
+
+- Developmental sector - HIV/AIDS
+
+- Over [38 million people estimated to be living with HIV globally](https://www.unaids.org/en).
+
+- Nigeria has up to [1.9 million PLHIV](https://naiis.ng/Summary_Sheet) with about [1.3 million of these are already on treatment](https://ndr.shieldnigeriaproject.com/public/dashboard).
+
+- [UNAIDS 2030 targets (95-95-95)](https://www.togetheractnow.org/endaids.html)
+    -   95% of people living with HIV are aware of their status
+    -   95% of people who are aware of their status are on ART
+    -   95% of people on ART are virally suppressed.
+
+- Indicators are used to monitor progress/performance. For the [PEPFAR](https://www.state.gov/pepfar/) supported program the [MER indicators](https://datim.zendesk.com/hc/en-us/articles/360000084446-MER-Indicator-Reference-Guides) are used. These are grouped into:
+
+    -     Prevention indicators
+    -     Testing indicators
+    -     Treatment indicators
+    -     Viral Suppression indicators
+    -     Health Systems indicators
+
+---
+background-image: url("./snips/abuja R ladies.jpg")
+background-size: 100px
+background-position: 95% 5%
+
+## About what I do - Cont'd
+&lt;center&gt;&lt;img src="./snips/unaids.gif" height="400px" /&gt;&lt;/center&gt;
+
+Image credit: [UNAIDS](https://www.togetheractnow.org/endaids.html)
+
+---
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/39/Naruto_Shiki_Fujin.svg)
+background-size: 100px
+background-position: 95% 95%
+
+## The National Data Repository - NDR
+
+- A repository of de-identified patient-level data from facilities across the country.
+- Contains records of over 1000 reporting facilities and over 1 million PLHIV currently on treatment.
+
+- Requires login access. [A public dashboard is available](https://ndr.shieldnigeriaproject.com/public/dashboard).
+
+.pull-left[![description of the image](./snips/ndr1.png)]
+
+.pull-right[![description of the image](./snips/ndr2.png)]
+
+&lt;br/&gt;
+&lt;br/&gt;
+.pull-right[Image credit: [NDR](https://ndr.shieldnigeriaproject.com/public/dashboard)]
+
+---
+background-image: url("./snips/abuja R ladies.jpg")
+background-size: 100px
+background-position: 95% 5%
+
+## NDR - 2
+
+&lt;center&gt;&lt;img src="./snips/ndr flow.png" height="500px" /&gt;&lt;/center&gt;
+
+.footnote[&lt;i&gt;Source&lt;/i&gt;: &lt;b&gt;Stephen Balogun&lt;/b&gt;]
+
+---
+background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg")
+background-size: 100px
+background-position: 95% 95%
+
+## NDR - 3 
+
+&gt; &lt;i&gt;“To measure is to know. If you cannot measure it, you cannot improve it.”&lt;/i&gt;
+&gt;
+&gt; \- &lt;b&gt;Lord Kelvin&lt;/b&gt;
+
+&lt;br/&gt;
+
+
+Analysis is traditionally conducted using spreadsheets. Challenges include:
+
++   The software must be installed on the user’s computer.
+
++   The user must be familiar with the formula for calculation of the indicator of interest.
+
++   Because of the point-and-click nature of the analysis, it is error-prone. Sometimes these errors go unnoticed by the users giving a rather false result.
+
++   Performing the same analysis periodically can be quite tedious and time-consuming as the analysis is usually done afresh every time.
+
+---
+background-image: url("./snips/abuja R ladies.jpg")
+background-size: 100px
+background-position: 95% 5%
+
+## {tidyndr} - Workflow
+&lt;center&gt;&lt;img src="./snips/r4ds-general.png" height="500px" /&gt;&lt;/center&gt;
+
+.footnote[&lt;i&gt;Artwork by @allison_horst&lt;/i&gt;]
+---
+background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/7e/Mudra-Naruto-KageBunshin.svg")
+background-size: 100px
+background-position: 95% 95%
+
+## {tidyndr} ~ tidyverse
+.pull-left[
+- tidyverse group of packages
+
+- janitor
+
+- vroom
+
+- lubridate
+
+- purrr
+]
+.pull-right[&lt;img src="./snips/tidyverse_celestial.png" height="450px" /&gt;]
+
+.footnote[&lt;i&gt;Artwork by @allison_horst&lt;/i&gt;]
+---
+background-image: url("./snips/abuja R ladies.jpg")
+background-size: 100px
+background-position: 95% 5%
+
+## {tidyndr} - the package
+
+
+```r
+# from CRAN
+install.packages("tidyndr", dependencies = TRUE)
+
+# developmental version from github
+devtools::install_github("stephenbalogun/tidyndr", build_vignettes = TRUE)
+
+## practice data
+file_path &lt;- "https://raw.githubusercontent.com/stephenbalogun/abuja_r_ladies/main/ndr_example.csv"
+```
+
+why do:
+
+`$$s = \sum_{i=1}^nX_i\frac{(x - \bar{x})^2}{n}$$`
+When you can just do:
+`$$s = var(x)$$`
+---
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/39/Naruto_Shiki_Fujin.svg)
+background-size: 100px
+background-position: 95% 95%
+
+## Package Organization
+
+#### Importing function
+
+```
+read_ndr()
+```
+#### Treatment function
+
+```
+1. tx_new()
+2. tx_curr()
+3. tx_appointment()
+4. tx_ml()
+5. tx_ml_outcomes()
+6. tx_rtt()
+7. tx_mmd()
+```
+---
+background-image: url("./snips/abuja R ladies.jpg")
+background-size: 100px
+background-position: 95% 5%
+
+## Package Organization - 2
+
+#### Viral Load functions
+
+```
+1. tx_vl_eligible()
+2. tx_pvls_den()
+3. tx_pvls_num()
+4. tx_vl_unsuppressed()
+```
+#### Summary functions
+
+```
+1. summarise_ndr()
+2. disaggregate()
+```
+&lt;i&gt;See:&lt;/i&gt;
+```
+vignette(package = "tidyndr", topic = "tidyndr")
+vignette(package = "tidyndr", topic = "Augmenting-tidyndr")
+```
+---
+background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg")
+background-size: 100px
+background-position: 95% 95%
+
+## The AchieveR app
+
+- A shiny application.
+
+- Interactive dashboard built on the {tidyndr} functions.
+
+&lt;br/&gt;
+
+
+&gt; &lt;i&gt;A package is good, a dashboard is (probably) better!!&lt;/i&gt;
+
+&lt;br/&gt;
+
+- Still a work in progress, far from the final version.
+
+- Uses both NDR and EMR data.
+
+- Can help compare concurrence or otherwise of the EMR and the NDR.
+
+- patient-level data can be downloaded based on the specific indicator of interest.
+---
+background-image: url("./snips/abuja R ladies.jpg")
+background-size: 100px
+background-position: 95% 5%
+
+## The AchieveR dashboard
+
+.pull-left[![description of the image](./snips/achiever1.png)]
+
+.pull-right[![description of the image](./snips/achiever.png)]
+---
+background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/7e/Mudra-Naruto-KageBunshin.svg")
+background-size: 100px
+background-position: 95% 95%
+
+## Questions please!
+
+&lt;center&gt;&lt;img src="./snips/sample_faces.png" height="500px" /&gt;&lt;/center&gt;
+
+.footnote[&lt;i&gt;Artwork by @allison_horst&lt;/i&gt;]
+---
+class: inverse, middle, center
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/39/Naruto_Shiki_Fujin.svg)
+background-size: contain
+
+# Demo
+
+---
+class: center, middle
+
+# Thanks!
+
+Slides created via the R packages:
+
+[**xaringan**](https://github.com/yihui/xaringan)&lt;br&gt;
+[gadenbuie/xaringanthemer](https://github.com/gadenbuie/xaringanthemer)
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
